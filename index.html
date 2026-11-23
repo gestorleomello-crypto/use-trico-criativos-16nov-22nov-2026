@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Criativos & Produtos · Use Tricô</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Identidade clara, premium — fundo branco, verde sofisticado nos detalhes, Fraunces + Inter. Design comprometido com tema claro. */
+:root{
+  color-scheme:light;
+  --bg:#ffffff; --bg-alt:#f6f8f4; --surface:#ffffff; --ink:#1b2620; --muted:#64706a;
+  --line:#e6eae1; --line-2:#eef1ea; --pine:#1f5b3c; --pine-ink:#184a30; --sage:#8aae96; --sage-soft:#eef4ec;
+  --good:#1f7a4d; --warn:#9a6a16; --warn-bg:#f8efd9; --crit:#a8392a; --crit-bg:#f8e7e2;
+  --shadow:0 1px 2px rgba(27,42,34,.04),0 10px 30px rgba(27,42,34,.05);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;font-size:15.5px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--serif);font-weight:560;text-wrap:balance;line-height:1.1;margin:0;color:var(--pine-ink)}
+h2{font-size:clamp(1.55rem,3.4vw,2.2rem);letter-spacing:-.012em;margin-bottom:.1em}
+h3{font-size:1.12rem;font-weight:600;color:var(--ink)}
+p{margin:.5em 0}
+a{color:var(--pine);text-underline-offset:2px}
+.eyebrow{font-family:var(--sans);font-weight:700;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--pine)}
+.lede{color:var(--muted);font-size:1.03rem;max-width:64ch}
+.num{font-variant-numeric:tabular-nums}
+.sticky{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.sticky .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:11px}
+.sticky b{font-family:var(--serif);font-weight:600;color:var(--pine-ink)}
+.tag{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
+section{padding-block:40px;border-top:1px solid var(--line)}
+section.alt{background:var(--bg-alt);border-top:1px solid var(--line)}
+.hero{padding-block:54px 34px}
+.hero h1{font-size:clamp(2.6rem,6.8vw,4.6rem);letter-spacing:-.022em;margin:.14em 0 .2em}
+.hero .sub{display:flex;gap:10px 22px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;margin-top:18px}
+.hero .sub b{color:var(--ink)}
+.findings{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(246px,1fr));gap:15px;counter-reset:f}
+.findings li{counter-increment:f;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 18px 18px 50px;position:relative;box-shadow:var(--shadow);font-size:.93rem}
+.findings li::before{content:counter(f);position:absolute;left:16px;top:17px;width:24px;height:24px;border-radius:50%;background:var(--sage-soft);color:var(--pine-ink);font-size:.78rem;font-weight:700;display:grid;place-items:center;font-family:var(--serif);border:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.subhead{display:flex;align-items:baseline;gap:10px;margin:26px 0 14px;flex-wrap:wrap}
+.subhead h3{font-family:var(--serif);font-size:1.3rem;color:var(--pine-ink)}
+.subhead .cap{font-size:.8rem;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:11px;min-width:0}
+.card .top{display:flex;justify-content:space-between;gap:8px;align-items:start}
+.card h3{font-size:1.04rem;line-height:1.2}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.c-active{background:var(--sage-soft);color:var(--good)}
+.c-paused{background:var(--warn-bg);color:var(--warn)}
+.c-crit{background:var(--crit-bg);color:var(--crit)}
+.c-new{background:#e7eef8;color:#2b5aa0}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:11px 8px;font-variant-numeric:tabular-nums;border-top:1px solid var(--line-2);padding-top:12px}
+.metrics div{min-width:0}
+.metrics .m{font-size:.64rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em}
+.metrics .x{font-size:1.02rem;font-weight:600;font-family:var(--serif);color:var(--ink)}
+.why{font-size:.88rem;color:var(--muted)}
+.why b{color:var(--ink)}
+.cardfoot{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;font-size:.82rem}
+.cardfoot a{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:8px;padding:5px 10px;text-decoration:none;color:var(--pine);background:var(--bg-alt)}
+.cardfoot .lowconf{color:var(--muted);font-size:.76rem;align-self:center}
+.pos{color:var(--good)}.neg{color:var(--crit)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.88rem;font-variant-numeric:tabular-nums}
+th,td{padding:11px 13px;text-align:right;border-bottom:1px solid var(--line-2);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:180px}
+thead th{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;background:var(--bg-alt)}
+tbody tr:last-child td{border-bottom:0}
+.cls{font-weight:700;font-size:.74rem;text-transform:uppercase;letter-spacing:.02em}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.q{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.q .item{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--sage);border-radius:0 12px 12px 0;padding:14px 16px;box-shadow:var(--shadow)}
+.q .item p{margin:.2em 0;font-size:.9rem}
+.q .item .ask{font-weight:650;color:var(--pine-ink)}
+.brief{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+.brief .b{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);min-width:0}
+.brief .b .p{font-size:.68rem;font-weight:700;color:var(--pine);letter-spacing:.06em;text-transform:uppercase}
+.brief .b h3{margin:.3em 0 .1em}
+.muted{color:var(--muted)}
+.flag{background:var(--sage-soft);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:.86rem;margin-top:16px}
+@media (max-width:720px){.cols,.q{grid-template-columns:1fr}}
+</style>
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+
+<div class="sticky"><div class="wrap"><b>Use Tricô — Criativos & Produtos</b><span class="tag">16/11 – 22/11/2026</span></div></div>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Para o time de conteúdo · Meta Ads + GA4 · Edição semanal</div>
+  <h1>Criativos & Produtos</h1>
+  <p class="lede">Quais peças estão vendendo, por que merecem ser reproduzidas e o que o time precisa gravar. Nesta edição, os anúncios são lidos nos dias com mensuração validada (19 a 21/11, comparados com 12 a 14/11) e os produtos, na semana completa.</p>
+  <div class="sub">
+    <span>Conta <b>USE TRICÔ · FUSO BR</b></span><span>Anúncios <b>19/11–21/11/2026</b> (qui–sáb) vs <b>12/11–14/11</b></span>
+    <span>Produtos <b>16/11–22/11/2026</b> (seg–dom)</span>
+    <span>Fontes <b>Meta Ads · GA4</b></span>
+  </div>
+</header>
+
+<div class="flag" role="note" style="margin:0 0 34px"><b>Observação sobre o período.</b> Durante parte desta semana, uma instabilidade na integração entre a plataforma Tray e a Meta comprometeu o registro de eventos de carrinho, checkout e compra nos anúncios (de 15/11 a 18/11). Para evitar distorções, a análise de desempenho dos anúncios considera somente os dias com mensuração validada — 19 a 21/11 — comparados com os mesmos dias da semana anterior, 12 a 14/11. Os indicadores do site provenientes do Google Analytics (produtos) mantêm o período semanal completo, de 16 a 22/11.</div>
+
+<section>
+  <div class="eyebrow">O essencial</div>
+  <h2>Principais descobertas</h2>
+  <p class="lede" style="margin-bottom:22px">Cinco leituras que orientam a produção de conteúdo desta semana. Nos anúncios, são só três dias de cada lado: os sinais são úteis, mas pedem confirmação na próxima edição.</p>
+  <ol class="findings">
+    <li><b>Looks Verde foi o criativo mais forte nos dias válidos.</b> <b>12 compras</b>, R$7,2 mil de receita atribuída, ROAS 6,6 e CPA de R$90 entre 19 e 21/11. Nos mesmos dias da semana anterior eram 7 compras com o mesmo ROAS 6,6: mais volume, mesma eficiência.</li>
+    <li><b>A Calça Linho Prateleira recuperou eficiência.</b> ROAS de 2,2 para 4,3 e de 6 para 7 compras, com investimento um pouco menor (R$1.322 → R$1.181) na comparação 19–21/11 × 12–14/11.</li>
+    <li><b>Peças de inverno aparecem com sinais iniciais.</b> Casaco Ponto Ostra (4 compras, ROAS 5,4) e Calça Moletom Comfy (3 compras, ROAS 5,1), sem entrega em 12–14/11, e a Calça Veludo (An10), com 4 compras e ROAS 8,4. Todos abaixo de 5 compras: sinal, ainda não prova.</li>
+    <li><b>No site, a Camisa Zelia Nózinho liderou com folga.</b> <b>R$16,0 mil</b>, 27 unidades e 4,0% de compras por visualização na semana de 16 a 22/11 — mais de 60% acima da receita do 2º produto. Os anúncios com o nome "Camisa Zelia" não tiveram entrega nos dias analisados.</li>
+    <li><b>Muita procura, pouca compra na Calça Viviane Biamar.</b> Foi a peça mais vista no GA4 (<b>4.599 visualizações</b>), com só 0,24% de compras por visualização. O anúncio da peça (Ad 44) foi o que mais recebeu investimento nos dias válidos (R$1.347) e teve 5 compras, com ROAS 2,5.</li>
+  </ol>
+</section>
+
+<section class="alt">
+  <div class="eyebrow">O que reproduzir</div>
+  <h2>Melhores criativos nos dias com medição válida (19 a 21/11)</h2>
+  <p class="lede">Os anúncios que mais venderam de quinta a sábado (19 a 21/11), identificados por ID real, com as métricas individuais desses três dias. ROAS e CPA de combinação campanha×anúncio; eficiência exige amostra, por isso o volume de compras aparece em cada card.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card">
+      <div class="top"><h3>Looks Verde (coleção)</h3><span class="chip c-active">Consistente</span></div>
+      <div class="why">Curadoria de looks. <b>Maior volume e maior receita</b> dos dias válidos, com o melhor CTR de link do grupo.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$1.082</div></div><div><div class="m">Compras</div><div class="x">12</div></div><div><div class="m">ROAS</div><div class="x pos">6,6</div></div>
+        <div><div class="m">Receita</div><div class="x">R$7,2k</div></div><div><div class="m">CPA</div><div class="x">R$90</div></div><div><div class="m">CTR link</div><div class="x">6,32%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$1,13</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://fb.me/2d62P4FybhOT33g" target="_blank" rel="noopener">Prévia do anúncio</a></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Calça Linho Prateleira</h3><span class="chip c-new">Recuperou</span></div>
+      <div class="why">Vídeo de peça única · post IG. Segundo maior volume (7 compras) e ROAS 4,3 — nos mesmos dias da semana anterior o ROAS era 2,2, com investimento maior.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$1.181</div></div><div><div class="m">Compras</div><div class="x">7</div></div><div><div class="m">ROAS</div><div class="x pos">4,3</div></div>
+        <div><div class="m">Receita</div><div class="x">R$5,1k</div></div><div><div class="m">CPA</div><div class="x">R$169</div></div><div><div class="m">CTR link</div><div class="x">4,29%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$0,63</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://www.instagram.com/p/DePtEdpsR2o/" target="_blank" rel="noopener">▶ Post IG</a></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Calça Janaína Jeans (AN8)</h3><span class="chip c-paused">Perdeu eficiência</span></div>
+      <div class="why">Catálogo. Manteve o volume (6 compras), mas com ROAS 2,9 e CPA mais alto que em 12–14/11. Segue relevante em volume; a eficiência precisa ser acompanhada.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$1.320</div></div><div><div class="m">Compras</div><div class="x">6</div></div><div><div class="m">ROAS</div><div class="x">2,9</div></div>
+        <div><div class="m">Receita</div><div class="x">R$3,8k</div></div><div><div class="m">CPA</div><div class="x">R$220</div></div><div><div class="m">CTR link</div><div class="x">3,24%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$1,42</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://fb.me/1X8Q0i6OaC0DeRB" target="_blank" rel="noopener">Prévia do anúncio</a></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Camisa Bianca (AN9)</h3><span class="chip c-paused">Perdeu eficiência</span></div>
+      <div class="why">Catálogo. 4 compras e ROAS 3,4 com investimento parecido com o de 12–14/11, quando teve 15 compras. Volume ainda pequeno para concluir — acompanhar na próxima edição.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$1.043</div></div><div><div class="m">Compras</div><div class="x">4</div></div><div><div class="m">ROAS</div><div class="x">3,4</div></div>
+        <div><div class="m">Receita</div><div class="x">R$3,6k</div></div><div><div class="m">CPA</div><div class="x">R$261</div></div><div><div class="m">CTR link</div><div class="x">3,94%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$1,14</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://fb.me/1Xfwzd6QIKXLtJ2" target="_blank" rel="noopener">Prévia do anúncio</a></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Calça Viviane Biamar (Ad 44)</h3><span class="chip c-paused">Em observação</span></div>
+      <div class="why">Vídeo · post IG. O anúncio com mais investimento nos dias válidos e o clique mais barato do grupo (CPC R$0,33), mas com ROAS 2,5.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$1.347</div></div><div><div class="m">Compras</div><div class="x">5</div></div><div><div class="m">ROAS</div><div class="x">2,5</div></div>
+        <div><div class="m">Receita</div><div class="x">R$3,3k</div></div><div><div class="m">CPA</div><div class="x">R$269</div></div><div><div class="m">CTR link</div><div class="x">4,47%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$0,33</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://www.instagram.com/p/DfbPLPpsXth/" target="_blank" rel="noopener">▶ Post IG</a></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Casaco Ponto Ostra</h3><span class="chip c-new">Novo destaque</span></div>
+      <div class="why">Vídeo · post IG. Sem entrega em 12–14/11; estreou com 4 compras e ROAS 5,4 — resultado promissor, ainda com poucas compras para confirmar consistência.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$608</div></div><div><div class="m">Compras</div><div class="x">4</div></div><div><div class="m">ROAS</div><div class="x pos">5,4</div></div>
+        <div><div class="m">Receita</div><div class="x">R$3,3k</div></div><div><div class="m">CPA</div><div class="x">R$152</div></div><div><div class="m">CTR link</div><div class="x">5,00%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$0,86</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://www.instagram.com/p/DfzgKnZMURR/" target="_blank" rel="noopener">▶ Post IG</a></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Calça Moletom Comfy</h3><span class="chip c-new">Novo destaque</span></div>
+      <div class="why">Vídeo · post IG. Sem entrega em 12–14/11; 3 compras com ROAS 5,1 e CTR de link de 5,75% — resultado promissor, ainda com poucas compras para confirmar consistência.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$614</div></div><div><div class="m">Compras</div><div class="x">3</div></div><div><div class="m">ROAS</div><div class="x pos">5,1</div></div>
+        <div><div class="m">Receita</div><div class="x">R$3,1k</div></div><div><div class="m">CPA</div><div class="x">R$205</div></div><div><div class="m">CTR link</div><div class="x">5,75%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$1,21</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://www.instagram.com/p/DfzgMuFMzc1/" target="_blank" rel="noopener">▶ Post IG</a></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Calça Veludo (An10)</h3><span class="chip c-new">Novo destaque</span></div>
+      <div class="why">Catálogo. Em 12–14/11 rodou com verba mínima (R$13); agora, com mais entrega, 4 compras, o melhor ROAS entre os destaques (8,4) e CPA de R$71 — ainda com poucas compras para confirmar consistência.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$283</div></div><div><div class="m">Compras</div><div class="x">4</div></div><div><div class="m">ROAS</div><div class="x pos">8,4</div></div>
+        <div><div class="m">Receita</div><div class="x">R$2,4k</div></div><div><div class="m">CPA</div><div class="x">R$71</div></div><div><div class="m">CTR link</div><div class="x">5,93%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$1,52</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://fb.me/2cj1Mv6L08RL52z" target="_blank" rel="noopener">Prévia do anúncio</a></div>
+    </div>
+  </div>
+
+  <div class="subhead"><h3>Promissores</h3><span class="cap">Sinal positivo inicial — resultado promissor, ainda com poucas compras para confirmar consistência</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="top"><h3>Rancho Biamar da Lígia (Ad 35)</h3><span class="chip c-new">Sinal inicial</span></div>
+      <div class="why">Vídeo · post IG. Pouca verba (R$123) e 2 compras de valor alto — o ROAS reflete poucas compras, <b>sinal, não prova</b>.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$123</div></div><div><div class="m">Compras</div><div class="x">2*</div></div><div><div class="m">ROAS</div><div class="x">15,6*</div></div>
+        <div><div class="m">Receita</div><div class="x">R$1.915</div></div><div><div class="m">CPA</div><div class="x">R$61</div></div><div><div class="m">CTR link</div><div class="x">1,90%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$4,73</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://www.instagram.com/p/DfxA-iQMbgK/" target="_blank" rel="noopener">▶ Post IG</a><span class="lowconf">*amostra mínima — 2 compras</span></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Black Sale — Conjunto que Valoriza (Ad 03)</h3><span class="chip c-new">Sinal inicial</span></div>
+      <div class="why">Vídeo · post IG. 2 compras com ROAS 8,2 e CPA de R$76 — vale observar com mais entrega antes de concluir.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$151</div></div><div><div class="m">Compras</div><div class="x">2*</div></div><div><div class="m">ROAS</div><div class="x">8,2*</div></div>
+        <div><div class="m">Receita</div><div class="x">R$1.235</div></div><div><div class="m">CPA</div><div class="x">R$76</div></div><div><div class="m">CTR link</div><div class="x">3,75%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$1,33</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://www.instagram.com/p/Dfe92yzMFh2/" target="_blank" rel="noopener">▶ Post IG</a><span class="lowconf">*amostra mínima — 2 compras</span></div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Linho Biamar 4 Cores (Ad 36)</h3><span class="chip c-new">Sinal inicial</span></div>
+      <div class="why">Vídeo · post IG. 2 compras com ROAS 6,7 — sinal positivo, ainda sem volume para confirmar.</div>
+      <div class="metrics">
+        <div><div class="m">Invest.</div><div class="x">R$309</div></div><div><div class="m">Compras</div><div class="x">2*</div></div><div><div class="m">ROAS</div><div class="x">6,7*</div></div>
+        <div><div class="m">Receita</div><div class="x">R$2.054</div></div><div><div class="m">CPA</div><div class="x">R$154</div></div><div><div class="m">CTR link</div><div class="x">2,29%</div></div>
+        <div><div class="m">CPC link</div><div class="x">R$4,29</div></div>
+      </div>
+      <div class="cardfoot"><a href="https://www.instagram.com/p/DfxA4hhshxN/" target="_blank" rel="noopener">▶ Post IG</a><span class="lowconf">*amostra mínima — 2 compras</span></div>
+    </div>
+  </div>
+  <div class="flag">🔎 <b>Prévias.</b> "Post IG" abre o post real usado como criativo; "Prévia do anúncio" abre o preview do Meta. O conteúdo do vídeo costuma exigir login do Instagram/Meta.</div>
+</section>
+
+<section>
+  <div class="eyebrow">Mesmos dias, duas semanas</div>
+  <h2>Criativos que se destacam por mais tempo</h2>
+  <p class="lede">Comparação de <b>19–21/11 comparado com 12–14/11</b> (quinta a sábado nas duas semanas), sempre pelo <b>ID real</b> do anúncio. A regra de ouro é separar <b>eficiência</b> (ROAS/CPA, proporcionais) de <b>investimento</b>: mais compras com mais verba não é, por si, ganho de força. Com três dias de cada lado, as amostras são pequenas e aparecem sinalizadas.</p>
+
+  <div class="subhead"><h3>Consistentes</h3><span class="cap">bons resultados nos dois períodos — referência prioritária</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="top"><h3>Looks Verde (coleção)</h3><span class="chip c-active">Consistente</span></div>
+      <div class="why">Mais verba, mais compras e o mesmo ROAS — com CPA menor. A referência mais sólida desta edição.</div>
+      <div class="metrics">
+        <div><div class="m">Compras 12–14 → 19–21</div><div class="x">7 → 12</div></div><div><div class="m">ROAS</div><div class="x pos">6,6 → 6,6</div></div><div><div class="m">CPA</div><div class="x">106 → 90</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead"><h3>Novos destaques</h3><span class="cap">passaram a performar agora — recuperação, mais entrega ou estreia</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="top"><h3>Calça Linho Prateleira</h3><span class="chip c-new">Recuperou</span></div>
+      <div class="why">Com um pouco menos de verba (R$1.322 → R$1.181), passou de ROAS 2,2 para 4,3 e reduziu o CPA.</div>
+      <div class="metrics">
+        <div><div class="m">Compras 12–14 → 19–21</div><div class="x">6 → 7</div></div><div><div class="m">ROAS</div><div class="x pos">2,2 → 4,3</div></div><div><div class="m">CPA</div><div class="x">220 → 169</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Casaco Ponto Ostra e Calça Moletom Comfy</h3><span class="chip c-new">Novo destaque</span></div>
+      <div class="why">Vídeos sem entrega em 12–14/11. Estrearam vendendo: Casaco com 4 compras (ROAS 5,4) e Moletom com 3 (ROAS 5,1), ambos com cerca de R$610 de investimento.</div>
+      <div class="metrics">
+        <div><div class="m">Casaco 19–21</div><div class="x">4 · 5,4</div></div><div><div class="m">Moletom 19–21</div><div class="x">3 · 5,1</div></div><div><div class="m">CPA</div><div class="x">152 · 205</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Calça Veludo (An10)</h3><span class="chip c-new">Novo destaque</span></div>
+      <div class="why">Em 12–14/11 rodou com verba mínima (R$13) e 1 compra; com R$283, chegou a 4 compras e ROAS 8,4.</div>
+      <div class="metrics">
+        <div><div class="m">Compras 12–14 → 19–21</div><div class="x">1* → 4</div></div><div><div class="m">ROAS</div><div class="x pos">26,2* → 8,4</div></div><div><div class="m">CPA</div><div class="x">13 → 71</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead"><h3>Perderam eficiência</h3><span class="cap">referências fortes em 12–14/11 que venderam com ROAS menor em 19–21/11</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="top"><h3>Calça Janaína Jeans (AN8)</h3><span class="chip c-paused">Perdeu eficiência</span></div>
+      <div class="why">Volume parecido com quase o dobro da verba. Em 12–14/11, parte do ROAS alto veio de compras de valor elevado (R$13,2 mil em 7 compras). Os dados não determinam a causa.</div>
+      <div class="metrics">
+        <div><div class="m">Compras 12–14 → 19–21</div><div class="x">7 → 6</div></div><div><div class="m">ROAS</div><div class="x neg">17,9 → 2,9</div></div><div><div class="m">CPA</div><div class="x">105 → 220</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="top"><h3>Camisa Bianca (AN9)</h3><span class="chip c-paused">Perdeu eficiência</span></div>
+      <div class="why">Investimento parecido (R$1.127 → R$1.043), menos compras e ROAS menor. Com três dias e 4 compras, a leitura precisa ser confirmada na próxima edição.</div>
+      <div class="metrics">
+        <div><div class="m">Compras 12–14 → 19–21</div><div class="x">15 → 4</div></div><div><div class="m">ROAS</div><div class="x neg">7,8 → 3,4</div></div><div><div class="m">CPA</div><div class="x">75 → 261</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead"><h3>Tabela completa da comparação</h3><span class="cap">mesmos dias da semana — 12–14/11 e 19–21/11</span></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Criativo</th><th>Produto</th><th>12–14 compras</th><th>12–14 ROAS</th><th>19–21 compras</th><th>19–21 ROAS</th><th>Leitura</th></tr></thead>
+    <tbody>
+      <tr><td>Looks Verde (an11)</td><td>Coleção</td><td>7</td><td>6,6</td><td>12</td><td class="pos">6,6</td><td style="text-align:left"><span class="cls pos">Consistente</span></td></tr>
+      <tr><td>Calça Linho Prateleira</td><td>Calça Linho</td><td>6</td><td>2,2</td><td>7</td><td class="pos">4,3</td><td style="text-align:left"><span class="cls" style="color:#2b5aa0">Recuperou</span></td></tr>
+      <tr><td>Calça Janaína (AN8)</td><td>Calça Janaína</td><td>7</td><td>17,9</td><td>6</td><td class="neg">2,9</td><td style="text-align:left"><span class="cls neg">Perdeu eficiência</span> — ROAS menor com mais verba</td></tr>
+      <tr><td>Camisa Bianca (AN9)</td><td>Camisa Bianca</td><td>15</td><td>7,8</td><td>4</td><td class="neg">3,4</td><td style="text-align:left"><span class="cls neg">Perdeu eficiência</span> — verba parecida, menos compras</td></tr>
+      <tr><td>Calça Viviane Biamar (Ad 44)</td><td>Calça Viviane</td><td>3</td><td>2,1</td><td>5</td><td class="neg">2,5</td><td style="text-align:left"><span class="cls" style="color:var(--warn)">Em observação</span> — muito mais verba, ROAS baixo</td></tr>
+      <tr><td>Casaco Ponto Ostra</td><td>Casaco Ponto Ostra</td><td>—</td><td>—</td><td>4</td><td class="pos">5,4</td><td style="text-align:left"><span class="cls" style="color:#2b5aa0">Novo destaque</span></td></tr>
+      <tr><td>Calça Moletom Comfy</td><td>Calça Moletom</td><td>—</td><td>—</td><td>3</td><td class="pos">5,1</td><td style="text-align:left"><span class="cls" style="color:#2b5aa0">Novo destaque</span></td></tr>
+      <tr><td>Calça Veludo (An10)</td><td>Calça Veludo</td><td>1*</td><td>26,2*</td><td>4</td><td class="pos">8,4</td><td style="text-align:left"><span class="cls" style="color:#2b5aa0">Novo destaque</span></td></tr>
+      <tr><td>Calça Jeans Cloe</td><td>Calça Cloe</td><td>3</td><td>3,6</td><td>3</td><td>3,4</td><td style="text-align:left"><span class="cls" style="color:var(--warn)">Em observação</span> — estável, abaixo de 3,5</td></tr>
+      <tr><td>Camisa Nozinho</td><td>Camisa Nozinho</td><td>6</td><td>6,5</td><td>2*</td><td class="neg">1,6*</td><td style="text-align:left"><span class="cls" style="color:var(--warn)">Em observação</span> — poucas compras nos dias válidos</td></tr>
+      <tr><td>Black Sale — Tá Rolando Agora (Ad 05)</td><td>Black Sale</td><td>5</td><td>6,5</td><td>1*</td><td class="neg">1,1*</td><td style="text-align:left"><span class="cls" style="color:var(--warn)">Em observação</span> — poucas compras nos dias válidos</td></tr>
+      <tr><td>Black Sale — Estático (an14)</td><td>Black Sale</td><td>5</td><td>16,6</td><td>0*</td><td>—</td><td style="text-align:left"><span class="cls" style="color:var(--warn)">Em observação</span> — sem compras nos dias válidos, com menos verba</td></tr>
+      <tr><td>Calça em Linho Biamar (Ad 42)</td><td>Calça Linho Biamar</td><td>9</td><td>6,1</td><td>0*</td><td>—</td><td style="text-align:left"><span class="cls" style="color:var(--warn)">Em observação</span> — sem compras nos dias válidos</td></tr>
+    </tbody>
+  </table></div>
+  <p class="why" style="margin-top:12px">* Amostra pequena: menos de 3 compras não sustentam conclusão de ROAS. Cada lado da comparação tem apenas três dias (quinta a sábado), então oscilações de poucas compras pesam muito; os dados não determinam a causa de nenhuma mudança. <b>Looks Verde</b> é a referência que se manteve; <b>Calça Janaína (AN8)</b> e <b>Camisa Bianca (AN9)</b> venderam com eficiência menor nos dias válidos e precisam ser acompanhadas.</p>
+</section>
+
+<section class="alt">
+  <div class="eyebrow">Vitrine</div>
+  <h2>Produtos que mais venderam</h2>
+  <p class="lede">Métricas de item do GA4 na semana completa, de 16 a 22/11 (visualizações, carrinhos, unidades, receita). Não usamos "sessões por produto": o agrupamento repete contagens entre variantes — lacuna declarada.</p>
+  <div class="tablewrap" style="margin-top:16px"><table>
+    <thead><tr><th>Produto</th><th>Receita</th><th>Unid.</th><th>Views</th><th>ATC</th><th>Compras por visualização</th></tr></thead>
+    <tbody>
+      <tr><td>Camisa Zelia Linho Italiano Nózinho Bordado em Flores 93927</td><td>R$16.047</td><td>27</td><td>670</td><td>13</td><td class="pos">4,0%</td></tr>
+      <tr><td>Conjunto Tânia Blusa Manga Curta e Calça Reta em Viscose</td><td>R$9.799</td><td>14</td><td>1.073</td><td>20</td><td class="pos">1,3%</td></tr>
+      <tr><td>Calça Biamar Barrel Liz em Liocel 12252</td><td>R$7.647</td><td>12</td><td>899</td><td>16</td><td class="pos">1,3%</td></tr>
+      <tr><td>Vestido Antônia Linho Italiano Midi</td><td>R$5.879</td><td>8</td><td>1.215</td><td>22</td><td class="neg">0,7%</td></tr>
+      <tr><td>Calça Biamar Reta Viviane 12051</td><td>R$4.642</td><td>11</td><td>4.599</td><td>45</td><td class="neg">0,2%</td></tr>
+      <tr><td>Calça Biamar Cargo 100% Linho 12274</td><td>R$4.505</td><td>5</td><td>629</td><td>15</td><td class="neg">0,8%</td></tr>
+      <tr><td>Jaqueta Curta Liliane Linho Italiano 94627 <span class="muted">(poucas visualizações)</span></td><td>R$4.199</td><td>7</td><td>31</td><td>2</td><td class="pos">22,6%</td></tr>
+      <tr><td>Calça Biamar Reta em Moletom LOR 12283</td><td>R$4.059</td><td>6</td><td>851</td><td>23</td><td class="neg">0,7%</td></tr>
+      <tr><td>Capa Ampla Pelerine 10177 <span class="muted">(inverno)</span></td><td>R$3.915</td><td>6</td><td>828</td><td>18</td><td class="neg">0,7%</td></tr>
+      <tr><td>Vestido Longo Valentina Linho Floral 94027</td><td>R$3.599</td><td>6</td><td>327</td><td>11</td><td class="pos">1,8%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="subhead"><h3>Oportunidades nos produtos</h3><span class="cap">muito interesse × pouca exposição</span></div>
+  <div class="cols">
+    <div style="min-width:0">
+      <div class="tablewrap"><table>
+        <thead><tr><th>Muito interesse, pouca compra</th><th>Views</th><th>Compras por visualização</th><th>Unid.</th></tr></thead>
+        <tbody>
+          <tr><td>Calça Biamar Reta Viviane</td><td>4.599</td><td class="neg">0,24%</td><td>11</td></tr>
+          <tr><td>Calça Ana Reta Linho Italiano</td><td>1.459</td><td class="neg">0,14%</td><td>2</td></tr>
+          <tr><td>Calça Biamar Alfaiataria</td><td>1.411</td><td class="neg">0,07%</td><td>1</td></tr>
+          <tr><td>Blusa/T-shirt Biamar Tricô Vazado 12047</td><td>1.279</td><td class="neg">0,16%</td><td>2</td></tr>
+          <tr><td>Vestido Antônia Linho</td><td>1.215</td><td class="neg">0,66%</td><td>8</td></tr>
+          <tr><td>Calça Biamar Reta 100% Linho 12275</td><td>1.091</td><td class="neg">0,27%</td><td>3</td></tr>
+        </tbody>
+      </table></div>
+      <p class="why">Muita gente olhando, poucas comprando. O dado mostra interesse forte pela peça, mas não aponta a causa dessa baixa taxa de compras por visualização (PDP, preço, grade, oferta, tráfego ou mensuração).</p>
+    </div>
+    <div style="min-width:0">
+      <div class="tablewrap"><table>
+        <thead><tr><th>Pouca exposição, boa resposta</th><th>Views</th><th>Compras por visualização</th><th>Unid.</th></tr></thead>
+        <tbody>
+          <tr><td>Camiseta Canelada Gola Redonda Biamar 11537</td><td>176</td><td class="pos">7,39%</td><td>13</td></tr>
+          <tr><td>Regata Biamar Decote Coração 12537</td><td>286</td><td class="pos">3,85%</td><td>11</td></tr>
+          <tr><td>Regata Biamar Canelada Jana 11620</td><td>295</td><td class="pos">3,39%</td><td>10</td></tr>
+          <tr><td>Regata Biamar Martina Decote Quadrado 11465</td><td>274</td><td class="pos">2,92%</td><td>8</td></tr>
+        </tbody>
+      </table></div>
+      <p class="why">Muitas compras por visualização com pouca vitrine — candidatos a novos conteúdos. Com tão poucas visualizações, a taxa é instável: vale confirmar com mais exposição.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">A conexão</div>
+  <h2>Cruzamento entre criativos e produtos</h2>
+  <div class="q" style="margin-top:16px">
+    <div class="item"><p class="ask">Anunciamos o que mais vende?</p><p>Só em parte. A peça nº1 do site, <b>Camisa Zelia Nózinho</b> (27 un, R$16,0 mil), não teve entrega de anúncio com o nome "Camisa Zelia" nos dias analisados. O anúncio "Camisa Nozinho" teve entrega, mas os dados não dizem se mostra esta mesma peça. <b>Conjunto Tânia</b> (14 un) e <b>Calça Barrel Liz</b> (12 un), segunda e terceira em receita, também não têm anúncio com o nome delas. Compra atribuída ao anúncio não é o mesmo que unidade vendida da peça.</p></div>
+    <div class="item"><p class="ask">O que vende no site com pouca vitrine?</p><p>Básicos Biamar de malha canelada: <b>Camiseta Canelada 11537</b> (13 un, 7,39% de compras por visualização) e as regatas <b>Decote Coração 12537</b>, <b>Jana 11620</b> e <b>Martina 11465</b> — todas com menos de 300 visualizações. A <b>Regata Nati</b> foi a 2ª peça em unidades da semana (16 un). Oportunidade direta de novos conteúdos.</p></div>
+    <div class="item"><p class="ask">Que peças respondem no site e no Meta ao mesmo tempo?</p><p>A <b>Calça Viviane Biamar</b> aparece nas duas fontes, mas com eficiência baixa em ambas: 11 un no site (0,24% de compras por visualização) e 5 compras atribuídas ao Ad 44 (ROAS 2,5). O <b>Vestido Antônia</b> soma 8 un no site e R$5,9 mil. São populações diferentes — compra atribuída ao anúncio não é unidade da peça.</p></div>
+    <div class="item"><p class="ask">Onde destravar demanda?</p><p><b>Calça Viviane Biamar</b> (4.599 visualizações, 0,24%), <b>Calça Ana Reta Linho</b> (1.459, 0,14%) e <b>Calça Biamar Alfaiataria</b> (1.411, 0,07%). O anúncio novo da Calça Ana teve o maior CTR de link entre os anúncios com 2 ou mais compras nos dias válidos (6,77%), mas só 2 compras* (ROAS 2,9*).</p></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="eyebrow">O que priorizar</div>
+  <h2>Direcionamento de novos criativos</h2>
+  <p class="lede">O que vale a pena gravar e por quê, com base nos dados desta semana. Como produzir e apresentar cada peça é decisão do time da Use Tricô. Priorizamos a referência que se manteve nos dois períodos comparados.</p>
+  <div class="brief" style="margin-top:18px">
+    <div class="b"><div class="p">Prioridade alta</div><h3>Camisa Zelia Nózinho</h3>
+      <p class="why"><b>Por quê:</b> produto nº1 do site na semana, com R$16.047, 27 unidades e 4,0% de compras por visualização.</p>
+      <p class="why"><b>Oportunidade:</b> os anúncios com o nome da peça não tiveram entrega nos dias analisados — demanda comprovada sem um criativo ativo que a nomeie.</p>
+      <p class="why"><b>Referência:</b> o Looks Verde, curadoria consistente nos dois períodos (ROAS 6,6 nos dois, 7 → 12 compras).</p>
+    </div>
+    <div class="b"><div class="p">Sem anúncio próprio</div><h3>Conjunto Tânia e Calça Barrel Liz</h3>
+      <p class="why"><b>Por quê:</b> segunda e terceira peças em receita no site (R$9.799 e R$7.647), ambas com 1,3% de compras por visualização.</p>
+      <p class="why"><b>Oportunidade:</b> nenhum anúncio leva o nome dessas peças.</p>
+      <p class="why"><b>Referência:</b> o vídeo de peça única da Calça Linho Prateleira, que recuperou eficiência (ROAS 2,2 → 4,3).</p>
+    </div>
+    <div class="b"><div class="p">Pouca vitrine, boa resposta</div><h3>Camiseta e regatas caneladas Biamar</h3>
+      <p class="why"><b>Por quê:</b> Camiseta Canelada 11537 (13 un, 7,39%), Regata Decote Coração 12537 (11 un, 3,85%), Regata Jana (10 un, 3,39%) e Regata Martina (8 un, 2,92%), todas com menos de 300 visualizações.</p>
+      <p class="why"><b>Oportunidade:</b> vendem bem com pouca exposição; mais vitrine pode confirmar se a taxa se sustenta.</p>
+      <p class="why"><b>Referência:</b> o formato de curadoria do Looks Verde, que reúne várias peças num só criativo.</p>
+    </div>
+    <div class="b"><div class="p">Sinal inicial</div><h3>Casaco Ponto Ostra e Calça Veludo</h3>
+      <p class="why"><b>Por quê:</b> no Meta, estrearam ou ganharam entrega com 4 compras cada e ROAS 5,4 e 8,4 nos dias válidos. No site, o Casaco Ponto Ostra teve 695 visualizações e 2 unidades na semana.</p>
+      <p class="why"><b>Oportunidade:</b> novos ângulos das peças de inverno, acompanhando se o resultado se mantém com mais compras.</p>
+      <p class="why"><b>Referência:</b> o vídeo do Casaco Ponto Ostra e o catálogo da Calça Veludo (An10).</p>
+    </div>
+    <div class="b"><div class="p">Demanda a destravar</div><h3>Calça Viviane Biamar</h3>
+      <p class="why"><b>Por quê:</b> a peça mais vista do site (4.599 visualizações, 45 carrinhos), com só 0,24% de compras por visualização.</p>
+      <p class="why"><b>Oportunidade:</b> o interesse existe; vale conteúdo focado no que ajuda a decidir a compra (caimento, tecido, medidas).</p>
+      <p class="why"><b>Referência:</b> a Calça Linho Prateleira, vídeo de peça única que melhorou a eficiência entre os dois períodos.</p>
+    </div>
+  </div>
+</section>
+
+<div style="padding-block:40px 24px;border-top:1px solid var(--line);text-align:center">
+  <div class="eyebrow" style="color:var(--sage)">Use Tricô · Criativos &amp; Produtos</div>
+  <p class="muted" style="font-size:.84rem;margin-top:6px">Edição semanal · produtos 16–22/11/2026 · anúncios 19–21/11/2026</p>
+</div>
+
+</div>
+
+</body>
+</html>
